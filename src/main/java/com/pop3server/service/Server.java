@@ -9,8 +9,6 @@ public class Server {
     private static final String ERROR_INVALID_TIMEOUT = "An invalid timeout was specified. Timeout must be greater than zero.";
     private static final String ERROR_UNABLE_TO_ESTABLISH_SOCKET = "An error occurred while establishing a socket or thread.";
     private final int port;
-
-
     private boolean serverRunning;
 
     public Server(int port, int timeout) throws IllegalArgumentException {

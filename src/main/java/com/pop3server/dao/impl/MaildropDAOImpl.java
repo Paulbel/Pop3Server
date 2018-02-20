@@ -11,12 +11,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public final class MaildropDAOImpl implements MaildropDAO {
-    private final static String GET_USER = "SELECT maildrop.login, maildrop.password FROM maildrop WHERE login = ?";
-    private final static String CHECK_PASSWORD = "SELECT maildrop.login FROM maildrop WHERE login = ? AND password = ?";
-
-    private final static String CHECK_UNLOCKED_QUERY = "SELECT maildrop.login FROM maildrop WHERE login = ? AND state='unlocked'";
-
-    private final static String SET_MAILDROP_STATE_QUERY = "UPDATE maildrop SET state = ? WHERE login = ?";
+    private final static String GET_USER = "SELECT maildrop.login, maildrop.password " +
+            "FROM maildrop " +
+            "WHERE login = ?";
+    private final static String CHECK_PASSWORD = "SELECT maildrop.login " +
+            "FROM maildrop " +
+            "WHERE login = ? AND password = ?";
+    private final static String CHECK_UNLOCKED_QUERY = "SELECT maildrop.login " +
+            "FROM maildrop " +
+            "WHERE login = ? AND state='unlocked'";
+    private final static String SET_MAILDROP_STATE_QUERY = "UPDATE maildrop " +
+            "SET state = ? " +
+            "WHERE login = ?";
 
     @Override
     public boolean checkIfMaildropExists(String login) throws DAOException {
@@ -66,6 +72,4 @@ public final class MaildropDAOImpl implements MaildropDAO {
             throw new DAOException(e);
         }
     }
-
-
 }

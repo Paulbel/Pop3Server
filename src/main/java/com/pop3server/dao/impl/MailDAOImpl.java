@@ -14,17 +14,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class MailDAOImpl implements MailDAO {
-    private final String GET_ALL_MAIL_QUERY = "SELECT * FROM maildrop INNER JOIN mail ON maildrop.login = mail.receiver OR maildrop.login = mail.sender WHERE login = ? AND mail.state = 'actual'";
-
-    private final String GET_MESSAGE = "SELECT * FROM maildrop INNER JOIN mail ON maildrop.login = mail.receiver OR maildrop.login = mail.sender WHERE login = ? AND mail.state = 'actual' LIMIT 1 OFFSET ?";
-
-
-    private final String GET_UID_OF_MESSAGE = "SELECT MD5(mail.id) AS 'UID' FROM maildrop INNER JOIN mail ON maildrop.login = mail.receiver OR maildrop.login = mail.sender WHERE login = ? AND mail.state = 'actual' LIMIT 1 OFFSET ?";
-    private final String GET_UIDL = "SELECT MD5(mail.id) AS 'UID' FROM maildrop INNER JOIN mail ON maildrop.login = mail.receiver OR maildrop.login = mail.sender WHERE login = ? AND mail.state = 'actual'";
-    private final String GET_MAIL_COUNT_QUERY = "SELECT COUNT(mail.id) AS 'count' FROM maildrop INNER JOIN mail ON maildrop.login = mail.receiver OR maildrop.login = mail.sender WHERE login = ? AND mail.state = 'actual'";
-    private final String SET_DELETED_MAIL_STATE_QUERY = "UPDATE mail SET state = 'deleted' WHERE mail.id = ?";
-    private final String REMOVE_DELETED_MESSAGES = "DELETE FROM mail WHERE mail.sender = ? OR mail.receiver = ?";
-
+    private final String GET_ALL_MAIL_QUERY = "SELECT * FROM maildrop " +
+            "INNER JOIN mail ON maildrop.login = mail.receiver OR maildrop.login = mail.sender " +
+            "WHERE login = ? AND mail.state = 'actual'";
+    private final String GET_MESSAGE = "SELECT * FROM maildrop " +
+            "INNER JOIN mail ON maildrop.login = mail.receiver OR maildrop.login = mail.sender " +
+            "WHERE login = ? AND mail.state = 'actual' LIMIT 1 OFFSET ?";
+    private final String GET_UID_OF_MESSAGE = "SELECT MD5(mail.id) AS 'UID' " +
+            "FROM maildrop INNER JOIN mail ON maildrop.login = mail.receiver OR maildrop.login = mail.sender " +
+            "WHERE login = ? AND mail.state = 'actual' LIMIT 1 OFFSET ?";
+    private final String GET_UIDL = "SELECT MD5(mail.id) AS 'UID' " +
+            "FROM maildrop INNER JOIN mail ON maildrop.login = mail.receiver OR maildrop.login = mail.sender " +
+            "WHERE login = ? AND mail.state = 'actual'";
+    private final String SET_DELETED_MAIL_STATE_QUERY = "UPDATE mail SET state = 'deleted' " +
+            "WHERE mail.id = ?";
+    private final String REMOVE_DELETED_MESSAGES = "DELETE FROM mail " +
+            "WHERE mail.sender = ? OR mail.receiver = ?";
 
     @Override
     public List<Mail> getAllMail(String login) throws DAOException {
@@ -54,21 +59,6 @@ public final class MailDAOImpl implements MailDAO {
                 return null;
             }
             return createMail(resultSet);
-        } catch (SQLException e) {
-            throw new DAOException(e);
-        }
-    }
-
-    @Override
-    public int getMailCount(String login) throws DAOException {
-        try (Connection connection = ConnectionProvider.instance.getConnection();
-             PreparedStatement statement = connection.prepareStatement(GET_MAIL_COUNT_QUERY)) {
-            statement.setString(1, login);
-            ResultSet resultSet = statement.executeQuery();
-            if (!resultSet.next()) {
-                throw new DAOException("Can't get mail count from database");
-            }
-            return resultSet.getInt("count");
         } catch (SQLException e) {
             throw new DAOException(e);
         }
@@ -130,7 +120,6 @@ public final class MailDAOImpl implements MailDAO {
             throw new DAOException(e);
         }
     }
-
 
     private Mail createMail(ResultSet resultSet) throws SQLException {
         Mail mail = new Mail();

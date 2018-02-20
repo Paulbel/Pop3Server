@@ -10,7 +10,7 @@ public class MailDAOImplTest {
     public void getAllMail() throws Exception {
         DAOFactory daoFactory = DAOFactory.getInstance();
         MailDAO mailDAO = daoFactory.getMailDAO();
-        System.out.println(mailDAO.getAllMail("Pavel"));
+        System.out.println(mailDAO.getAllMail("login1"));
     }
 
     @Test

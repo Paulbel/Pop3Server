@@ -50,7 +50,7 @@ public class ServerThread extends Thread {
     @Override
     public void run() {
         String input;
-        String output = null;
+        String output;
         try {
             init();
             streamWriter.println(SERVER_WELCOME);

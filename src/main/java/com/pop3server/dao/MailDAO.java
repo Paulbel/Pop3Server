@@ -6,12 +6,9 @@ import com.pop3server.entity.Mail;
 import java.util.List;
 
 public interface MailDAO {
-
     List<Mail> getAllMail(String login) throws DAOException;
 
     Mail getMail(String login, int index) throws DAOException;
-
-    int getMailCount(String login) throws DAOException;
 
     String getUID(String login, int index) throws DAOException;
 

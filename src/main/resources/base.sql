@@ -70,6 +70,6 @@ INSERT INTO maildrop (login, password) VALUES
 INSERT INTO mail (sender, receiver, body, date, subject) VALUES
   ('Pavel', 'login1', '4e kak dela', '2016-1-23 18:54:38', 'ku'),
   ('login1', 'Pavel', 'norm', '2016-1-23 18:54:40', 'kuku'),
-  ('login1', 'login2', 'privet', '2016-1-23 18:54:50', 'kk');
+  ('login1', 'Pavel', 'privet', '2016-1-23 18:54:50', 'kk');
 
 

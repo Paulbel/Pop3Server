@@ -14,7 +14,6 @@ public final class CommandInvoker {
     private static final CommandInvoker instance = new CommandInvoker();
     private Map<String, Command> commandMap;
 
-
     private CommandInvoker() {
         XMLReader reader = null;
         try {
@@ -28,7 +27,6 @@ public final class CommandInvoker {
             throw new RuntimeException(e);
         }
     }
-
 
     public String executeCommand(ServerThread serverThread, String request) throws ServiceException {
         String[] requestParts = request.split("\\s", 2);
