@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.pharmacy.com/Commands"
+        xmlns:tns="http://www.pharmacy.com/Commands"
+        elementFormDefault="qualified"
+        attributeFormDefault="qualified">
+    <element name="commands">
+        <complexType>
+            <sequence>
+                <element name="command" type="tns:Command" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Command">
+        <sequence>
+            <element name="name"/>
+            <element name="class"/>
+        </sequence>
+    </complexType>
+
+</schema> 

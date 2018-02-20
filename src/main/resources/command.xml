@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<com:commands xmlns:com="http://www.pharmacy.com/Commands"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.pharmacy.com/Commands schema.xsd">
+    <com:command>
+        <com:name>CAPA</com:name>
+        <com:class>com.pop3server.service.command.impl.CAPA</com:class>
+    </com:command>
+    <com:command>
+        <com:name>DELE</com:name>
+        <com:class>com.pop3server.service.command.impl.DELE</com:class>
+    </com:command>
+    <com:command>
+        <com:name>LIST</com:name>
+        <com:class>com.pop3server.service.command.impl.LIST</com:class>
+    </com:command>
+    <com:command>
+        <com:name>PASS</com:name>
+        <com:class>com.pop3server.service.command.impl.PASS</com:class>
+    </com:command>
+    <com:command>
+        <com:name>QUIT</com:name>
+        <com:class>com.pop3server.service.command.impl.QUIT</com:class>
+    </com:command>
+    <com:command>
+        <com:name>RETR</com:name>
+        <com:class>com.pop3server.service.command.impl.RETR</com:class>
+    </com:command>
+    <com:command>
+        <com:name>STAT</com:name>
+        <com:class>com.pop3server.service.command.impl.STAT</com:class>
+    </com:command>
+    <com:command>
+        <com:name>UIDL</com:name>
+        <com:class>com.pop3server.service.command.impl.UIDL</com:class>
+    </com:command>
+    <com:command>
+        <com:name>USER</com:name>
+        <com:class>com.pop3server.service.command.impl.USER</com:class>
+    </com:command>
+</com:commands>
+
